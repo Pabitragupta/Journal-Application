@@ -15,7 +15,7 @@ public class PublicController {
 
     @GetMapping("/health_check")
     public String health(){
-        return "EveryThing is Good!!";
+        return "EveryThing is Ok.";
     }
 
     //To add the data into the database
