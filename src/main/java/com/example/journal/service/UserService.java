@@ -69,20 +69,16 @@ public class UserService {
     //used to delete the data based on the id
     @Transactional
     public boolean deleteByUserName(String userName){
-        boolean remove = false;
+        if (!userRepository.existsByUserName(userName)) {
+            throw new RuntimeException("User not found with username: " + userName);
+        }
+
         try {
-            if(!userRepository.existsByUserName(userName)){
-                throw new RuntimeException("User is not found");
-            }
-            else{
-                userRepository.deleteByUserName(userName);
-                remove = true;
-            }
+            userRepository.deleteByUserName(userName);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException("Error occurred while deleting the user", e);
         }
-        catch (Exception e){
-            throw new RuntimeException("An error occurs while deleting the User", e);
-        }
-        return remove;
     }
 
 

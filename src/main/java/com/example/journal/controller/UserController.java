@@ -48,14 +48,9 @@ public class UserController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
 
-        boolean user = userService.deleteByUserName(username);
+        userService.deleteByUserName(username);
 
-        if(user){
-            return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>("User is not present.", HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
     }
 
 

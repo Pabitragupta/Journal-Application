@@ -21,6 +21,11 @@ public class User {
     @NonNull
     private String userName;
 
+    private String email;
+
+    @Column(name = "sentiment_analysis")
+    private boolean sentimentAnalysis;
+
     @NonNull
     private String password;
 
