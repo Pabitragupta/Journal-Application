@@ -25,4 +25,11 @@ public class PublicController {
         return userService.saveNewEntry(user);
     }
 
+
+    //To create the admin user
+    @PostMapping("/create-admin-user")
+    public void createAdminUser(@RequestBody User user){
+        userService.saveAdmin(user);
+    }
+
 }

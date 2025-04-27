@@ -34,11 +34,6 @@ public class AdminController {
     }
 
 
-     @PostMapping("/create-admin-user")
-    public void createUser(@RequestBody User user){
-        userService.saveAdmin(user);
-    }
-
 
 
     //For personal purpose

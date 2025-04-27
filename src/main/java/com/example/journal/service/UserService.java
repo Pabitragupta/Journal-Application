@@ -66,7 +66,7 @@ public class UserService {
 
 
 
-    //used to delete the data based on the id
+    //used to delete the data based on the user name
     @Transactional
     public boolean deleteByUserName(String userName){
         if (!userRepository.existsByUserName(userName)) {
@@ -82,7 +82,7 @@ public class UserService {
     }
 
 
-
+    //To Save the User whose role is {user and also admin}
     public void saveAdmin(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList("USER", "ADMIN"));

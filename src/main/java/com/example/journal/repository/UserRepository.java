@@ -18,7 +18,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     boolean existsByUserName(String userName);
 
 
-    @Query(value = "SELECT * FROM users WHERE email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$' AND sentiment_analysis = true", nativeQuery = true)
+    @Query("SELECT DISTINCT u FROM User u JOIN FETCH u.journalEntries WHERE u.email LIKE '%@%'")
     List<User> getUserForSA();
 
+
 }
+
+
+//@Query(value = "SELECT * FROM users WHERE email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$' AND sentiment_analysis = true", nativeQuery = true)
