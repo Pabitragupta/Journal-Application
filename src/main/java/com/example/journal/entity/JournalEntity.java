@@ -1,5 +1,6 @@
 package com.example.journal.entity;
 
+import com.example.journal.enums.Sentiment;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -19,6 +20,8 @@ public class JournalEntity {
     private String title;
 
     private String content;
+
+    private Sentiment sentiment;
 
     //    @ManyToOne
 //    @JoinColumn(name = "user_id", nullable = false)

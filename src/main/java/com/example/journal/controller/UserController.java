@@ -23,6 +23,8 @@ public class UserController {
     private WeatherService weatherService;
 
 
+
+    //Used to update the user data
     @PutMapping
     public ResponseEntity<?> updateUser(@RequestBody User newUser){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -32,6 +34,7 @@ public class UserController {
 
         oldUser.setUserName(newUser.getUserName());
         oldUser.setPassword(newUser.getPassword());
+        oldUser.setSentimentAnalysis(newUser.isSentimentAnalysis());
 
         userService.saveNewEntry(oldUser);  // This re-encodes password and saves
 
